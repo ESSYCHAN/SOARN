@@ -549,27 +549,27 @@ class Element:
         if self.get_name() == name:
             self.directActivation = self.activation
 
-    def getAsymptote(self) -> float:
-        # DynaAsy = self.dynamic_asymptote(low_bound=0.0,upper_bound=1.1,step=0.1,v=0.9)
-        # df = self.conversion(dyna_asy_mat=DynaAsy, lower_bound=0, upper_bound=11)
+    # def getAsymptote(self) -> float:
+    #     # DynaAsy = self.dynamic_asymptote(low_bound=0.0,upper_bound=1.1,step=0.1,v=0.9)
+    #     # df = self.conversion(dyna_asy_mat=DynaAsy, lower_bound=0, upper_bound=11)
 
-        # pred_index = np.round(self.getDirectActivation(),1)
-        # out_index = np.round(el2.directActivation, 1)
-        # #el.getAsymptote()
-        # error1 = df.loc[pred_index][out_index]
+    #     # pred_index = np.round(self.getDirectActivation(),1)
+    #     # out_index = np.round(el2.directActivation, 1)
+    #     # #el.getAsymptote()
+    #     # error1 = df.loc[pred_index][out_index]
 
-        if self.timepoint <= self.parent.get_last_onset():
-            # df.loc
-            if self.assoc > 0.9 or self.getDirectActivation() > 0.1 * self.intensity:
-                self.asy = 1
-            else:
-                self.asy = 0
-        else:
-            if self.getDirectActivation() > 0.1 * self.intensity:
-                self.asy = 1
-            else:
-                self.asy = 0
-        return self.asy
+    #     if self.timepoint <= self.parent.get_last_onset():
+    #         # df.loc
+    #         if self.assoc > 0.9 or self.getDirectActivation() > 0.1 * self.intensity:
+    #             self.asy = 1
+    #         else:
+    #             self.asy = 0
+    #     else:
+    #         if self.getDirectActivation() > 0.1 * self.intensity:
+    #             self.asy = 1
+    #         else:
+    #             self.asy = 0
+    #     return self.asy
 
     def getAlpha(self) -> float:
         # self.beta * self.intensity if self.is_us else self.salience
@@ -607,43 +607,20 @@ class Element:
         self.asoc = max(0, min(1.0, assoc * self.vartheta))
 
         self.assoc = self.asoc
-        # print(self.subelementNumber)
-
-        # self.count = 0
-        # self.total_activation = max(self.asoc, self.directActivation)
-
-        # while self.count < self.subelementNumber:
-        #     i = self.random_with_range(0, int(self.subelementNumber - 1))
-
-        #     if self.subelementActivations[i] == 0:
-        #         self.count += 1
-
-        #     self.subelementActivations[i] = 1 if (self.subelementActivations[i] == 1 or
-        #                                         random.random() < self.total_activation) else 0
 
         self.count = 0
         self.total_activation = max(self.asoc, self.directActivation)
 
-        # while self.count < self.subelementNumber:
-        #     i = self.random_with_range(0, int(self.subelementNumber - 1))
-
-        #     if self.subelementActivations[i] == 0:
-        #         self.count += 1
-
-        #     self.subelementActivations[i] = 1 if (self.subelementActivations[i] == 1 or
-        #                                         random.random() < self.total_activation) else 0
-
         select_ele = random.sample(population=list(
             range(self.subelementNumber)), k=random.randint(a=0, b=self.subelementNumber))
-        # select_ele = random.sample(population=list(
-        #     range(self.subelementNumber)), k=self.subelementNumber)
+        
         mask = np.isin(range(self.subelementNumber), select_ele).astype(int)
 
         for i in range(len(mask)):
             self.subelementActivations[i] = mask[i]
 
         self.generalActivation = max(0, max(self.assoc, self.activation))
-        # print(self.generalActivation, self.get_name())
+        
 
         ############## saving the activity ####################
         # print(self.trialCount)
@@ -773,25 +750,8 @@ class Element:
             self.group.add_to_map(str(self.names.index(otherName)),
                                   self.temp, self.eligibilitiesKey, True)
 
-        # self.index = self.names.index(otherName) if otherName in self.names else -1
-        # # print(self.index)
-        # if self.index == -1:
-        #     self.names.append(otherName)
-        #     self.index = self.names.index(otherName)
-
-        self.eligi = 0
-        # print('out of bounfs', self.outOfBounds)
-        # print(halla.get())
-        if not self.outOfBounds:
-            self.eligi = math.pow((other.getAssoc() == 0 or (
-                other.getAssoc() / (self.temp[other.get_microIndex()] + 0.001))), self.exponent)
-        else:
-            self.eligi = 0.1
-        if self.eligi > 0 and self.eligi < 0.01:
-            self.eligi = 0.1
-
-        # self.ac1 = int(self.getAsymptote())
-        # self.ac2 = int(other.getAsymptote())
+        
+        
         self.selfDereferencer = 1.0
         if otherName in self.get_name() or self.get_name() in other.get_name():
             self.selfDereferencer = 0.05 if not self.is_us else 0
@@ -799,35 +759,15 @@ class Element:
             otherName) if otherName in self.names else -1
         # print('INDEX', self.index, self.name)
         if self.index == -1:
-            # print('kends')
+         
             self.names.append(otherName)
             self.index = self.names.index(otherName)
-        # self.maxDurationPoint = self.durationPoint
-        # self.maxDurationPoint2 = other.getDurationPoint()
-        # self.fixer = 1
-        # if self.directActivation > 0.1:
-        #     if self.maxDurationPoint >= self.maxDurationPoint2:
-        #         self.fixer = 1.0
-        #     else:
-        #         self.fixer = self.parent.get_b()
-        # self.totalWeight = 0.0
-        # self.totalPrediction = 0.0
-        # self.x1 = min(1, max(self.ac1, self.assoc * 0.9))
-        # self.x2 = min(1, max(self.ac2, other.getAssoc() * 0.9))
-        # self.x3 = (self.fixer * self.x2 - abs(self.x1 - self.x2)) / \
-        #     max(self.x1 + 0.001, self.x2 + 0.001)
-        # self.nE = (otherError - self.ac2 * 1.0) + self.x3 * 1.0
-        # if other.is_us:
-        #     self.asymptote = self.nE
 
-        # self.Dereferencer = 1.0
-        # if otherName in self.get_name() or self.get_name() in other.get_name():
-        #     self.Dereferencer = 0.01 if not self.is_us else 0
 
         pred_index = np.round(self.directActivation, 1)
         out_index = np.round(other.directActivation, 1)
         self.asymptote = df.loc[pred_index][out_index]
-        # print('asymp', self.asymptote)
+        
 
         self.currentVariableSalience = (
             other.is_us * self.variableSalience[self.phase]) if other.is_us else (self.csVariableSalience[self.phase])
@@ -875,32 +815,21 @@ class Element:
                 self.totalPrediction += self.subelementWeights[i][self.index][other.get_microIndex(
                 )] * self.directActivation
 
-        # print('essy', self.totalWeight, self.commonDiscount)
-        # if self.group.get_model().get_isExternalSave():
-        #     storeLong = self.group.createDBString(self, self.currentTrialString, other.getParent(
-        #     ), self.phase, self.session, self.trialTypeCount.get(self.currentTrialString), self.timepoint, True)
-        #     print(storeLong)
-        #     self.group.addToDB(storeLong, self.totalPrediction)
-        #     storeLong = self.group.createDBString(self, self.currentTrialString, other.getParent(
-        #     ), self.phase, self.session, self.trialTypeCount.get(self.currentTrialString), self.timepoint, False)
-        #     self.group.addToDB(storeLong, self.totalWeight)
+        
         ob2 = self.group.get_from_db(
             str(self.phase), self.elementCurrentWeightsKey)
         self.current = [
             [0.0] * self.totalMax for _ in range(self.totalStimuli)]
         if ob2 is not None:
             self.current = ob2
-        # if self.index < len(self.current) and other.get_microIndex() < len(self.current[self.index]):
-        #     print('TRUE')
-        # print(self.name, self.current, self.index, other.get_microIndex(), str(self.phase))
+        
         self.current[self.index][other.get_microIndex()] = self.totalWeight
-        # self.current[self.index][other.get_microIndex()] = self.totalWeight
         self.group.add_to_map(str(self.phase), self.current,
                               self.elementCurrentWeightsKey, True)
         if self.firstPass:
             self.timepoint += 1
             self.firstPass = False
-        # print("TIMEPOINT", self.timepoint)
+
 
     def resetForNextTimepoint(self):
         if not self.hasReset:
