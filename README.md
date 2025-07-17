@@ -101,6 +101,18 @@ bibtex@phdthesis{chan2024soarn,
 }
 
 
+@article{mondragon2017associative,
+  title={Associative Learning Should Go Deep},
+  author={Mondragón, Esther and Alonso, Eduardo and Kokkola, Niklas},
+  journal={Trends in Cognitive Sciences},
+  volume={21},
+  number={11},
+  pages={822--825},
+  year={2017},
+  publisher={Elsevier}
+}
+
+
 # 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -120,10 +132,10 @@ For questions or collaborations:
 GitHub Issues: https://github.com/ESSYCHAN/SOARN/issues
 Email: [Esther.Mulwa@city.ac.uk]
 
-# 🙏 Acknowledgments
+# 
 
 Based on the DDA framework (Kokkola et al., 2019)
-Inspired by Rescorla-Wagner model and CNN architectures
+
 
 
 Note: This is research software. While functional, it may require adjustments for specific use cases.
