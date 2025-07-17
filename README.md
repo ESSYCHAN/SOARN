@@ -42,19 +42,19 @@ NumPy, Matplotlib, Jupyter
 8GB RAM minimum
 GPU optional but recommended
 
-Step 1: Clone the repository
+#Step 1: Clone the repository
 bashgit clone https://github.com/ESSYCHAN/SOARN.git
 cd SOARN
 
-Step 2: Set up virtual environment
+#Step 2: Set up virtual environment
 bashpython -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-Step 3: Install dependencies
+#Step 3: Install dependencies
 bashpip install -r requirements.txt
 
 
-Quick Start
+#Quick Start
 
 Basic Acquisition Experiment
 pythonfrom SOARN import Network, Group
@@ -91,33 +91,39 @@ Phase: Handles trial sequences and timing
 
 
 📝 Citation
+
 If you use SOARN in your research, please cite:
 bibtex@phdthesis{chan2024soarn,
   title={A Deep Learning Approach to Visual Associative Learning},
   author={Esther Chan},
   year={2024},
-  school={[City st Georgens University]}
+  school={[City st Georges University]}
 }
-📄 License
+
+
+#📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-🤝 Contributing
+
+
+#🤝 Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
-🐛 Known Issues
+
+#🐛 Known Issues
 
 Performance scales with image size (optimized for 256×256)
 Memory intensive for >3 stimuli experiments
 Requires ~30-45 minutes for 200-trial experiment
 
-📧 Contact
+#📧 Contact
 For questions or collaborations:
 
 GitHub Issues: https://github.com/ESSYCHAN/SOARN/issues
 Email: [Esther.Mulwa@city.ac.uk]
 
-🙏 Acknowledgments
+#🙏 Acknowledgments
 
 Based on the DDA framework (Kokkola et al., 2019)
 Inspired by Rescorla-Wagner model and CNN architectures
 
 
-Note: This is research software. While functional, it may require adjustments for specific use cases.
+#Note: This is research software. While functional, it may require adjustments for specific use cases.
