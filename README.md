@@ -93,10 +93,10 @@ Phase: Handles trial sequences and timing
 # 📝 Citation
 
 If you use SOARN in your research, please cite:
-bibtex@phdthesis{chan2024soarn,
-  title={A Deep Learning Approach to Visual Associative Learning},
-  author={Esther Chan},
-  year={2024},
+bibtex@phdthesis{mulwa2024soarn, 
+  title={Self Organising Associative Representation Learning Model}, 
+  author={Esther Mulwa}, 
+  year={2025},
   school={[City st Georges University]}
 }
 
